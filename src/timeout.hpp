@@ -4,7 +4,7 @@
 #include <condition_variable>
 #include <thread>
 
-namespace to {
+namespace timeout {
   namespace utils {
     template<typename F, typename... Args>
     struct ResultOf {
