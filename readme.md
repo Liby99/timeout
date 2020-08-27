@@ -1,5 +1,13 @@
 # Timeout function in C++
 
+Provide a task (in the form of a function) and a time. It either completes
+the task within the budget or throw a timeout error. The timeout function itself
+will return whatever the task function returns, and you should provide whatever
+the task function requires as function arguments.
+
+Internally, it creates another thread and uses mutex + conditional variables.
+Refer to [this stackoverflow question](https://stackoverflow.com/questions/40550730/how-to-implement-timeout-for-function-in-c) for more information.
+
 ## How to use
 
 You can run a simple lambda function with a timeout.
@@ -39,6 +47,9 @@ struct Bar {
 Bar b(10);
 auto k = timeout(1s, b, 10);
 ```
+
+> Note: to use chrono literals like `0.8s` please do `using namespace std::literals::chrono_literals;`
+> beforehand.
 
 ## Install
 
